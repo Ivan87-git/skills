@@ -1,15 +1,17 @@
 ---
 name: grill-with-docs
-description: Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise. Use when user wants to stress-test a plan against their project's language and documented decisions.
+description: Grilling session that challenges a plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise. Use when the user wants Codex to stress-test a feature idea, implementation plan, architectural decision, or domain model against the project's language and documented decisions before coding.
 ---
 
 <what-to-do>
 
-Interview me relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
+Interview the user relentlessly about every aspect of this plan until we reach a shared understanding. Walk down each branch of the design tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
 
 Ask the questions one at a time, waiting for feedback on each question before continuing.
 
 If a question can be answered by exploring the codebase, explore the codebase instead.
+
+Do not start implementation during this workflow unless the user explicitly asks to move from grilling into coding.
 
 </what-to-do>
 
@@ -17,7 +19,7 @@ If a question can be answered by exploring the codebase, explore the codebase in
 
 ## Domain awareness
 
-During codebase exploration, also look for existing documentation:
+During codebase exploration, also look for existing documentation, repo guidance, and nearby artifacts related to the plan.
 
 ### File structure
 
