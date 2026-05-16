@@ -1,13 +1,13 @@
 ---
 name: diagnose
-description: Disciplined diagnosis loop for hard bugs and performance regressions. Reproduce → minimise → hypothesise → instrument → fix → regression-test. Use when user says "diagnose this" / "debug this", reports a bug, says something is broken/throwing/failing, or describes a performance regression.
+description: Disciplined diagnosis loop for hard bugs and performance regressions. Reproduce → minimise → hypothesise → instrument → fix → regression-test. Use when the user wants Codex to diagnose or debug a bug, reports something broken/throwing/failing, or describes a performance regression.
 ---
 
 # Diagnose
 
 A discipline for hard bugs. Skip phases only when explicitly justified.
 
-When exploring the codebase, use the project's domain glossary to get a clear mental model of the relevant modules, and check ADRs in the area you're touching.
+When exploring the codebase, use the project's domain glossary and repo guidance to get a clear mental model of the relevant modules, and check ADRs in the area you're touching.
 
 ## Phase 1 — Build a feedback loop
 
@@ -47,6 +47,8 @@ The goal is not a clean repro but a **higher reproduction rate**. Loop the trigg
 ### When you genuinely cannot build a loop
 
 Stop and say so explicitly. List what you tried. Ask the user for: (a) access to whatever environment reproduces it, (b) a captured artifact (HAR file, log dump, core dump, screen recording with timestamps), or (c) permission to add temporary production instrumentation. Do **not** proceed to hypothesise without a loop.
+
+If the required loop depends on unavailable services, credentials, network access, or a command that needs approval, ask for the missing access instead of guessing from static code.
 
 Do not proceed to Phase 2 until you have a loop you believe in.
 
