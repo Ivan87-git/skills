@@ -1,6 +1,6 @@
 ---
 name: review
-description: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes — Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/PRD asked for?). Runs both reviews in parallel sub-agents and reports them side by side. Use when the user wants to review a branch, a PR, work-in-progress changes, or asks to "review since X".
+description: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes — Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/PRD asked for?). Calling this skill requests two parallel Codex subagents, one per review axis, and reports them side by side. Use when the user wants Codex to review a branch, a PR, work-in-progress changes, or asks to "review since X".
 ---
 
 # Review
@@ -10,9 +10,9 @@ Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
 - **Standards** — does the code conform to this repo's documented coding standards?
 - **Spec** — does the code faithfully implement the originating issue / PRD / spec?
 
-Both axes run as **parallel sub-agents** so they don't pollute each other's context, then this skill aggregates their findings.
+Both axes run as **parallel Codex subagents** so they don't pollute each other's context, then this skill aggregates their findings.
 
-The issue tracker should have been provided in repo guidance or the conversation. If `docs/agents/issue-tracker.md` is missing, ask the user for the missing tracker details before publishing.
+The issue tracker should have been provided in repo guidance or the conversation. If `docs/agents/issue-tracker.md` is missing, use `setup-mp-devflow-skills` before publishing.
 
 ## Process
 
@@ -44,9 +44,9 @@ Anything in the repo that documents how code should be written. Common locations
 
 Collect the list of files. The **Standards** sub-agent will read them.
 
-### 4. Spawn both sub-agents in parallel
+### 4. Spawn both subagents in parallel
 
-Send a single message with two `Agent` tool calls. Use the `general-purpose` subagent for both.
+Spawn two Codex subagents in parallel. Use `explorer` subagents when available, because both review axes are read-only codebase investigations.
 
 **Standards sub-agent prompt** — include:
 
