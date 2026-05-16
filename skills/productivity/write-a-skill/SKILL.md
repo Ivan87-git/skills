@@ -1,6 +1,6 @@
 ---
 name: write-a-skill
-description: Create new agent skills with proper structure, progressive disclosure, and bundled resources. Use when user wants to create, write, or build a new skill.
+description: Create new Codex skills with proper structure, progressive disclosure, and bundled resources. Use when the user wants Codex to create, write, update, or build a skill.
 ---
 
 # Writing Skills
@@ -15,8 +15,9 @@ description: Create new agent skills with proper structure, progressive disclosu
 
 2. **Draft the skill** - create:
    - SKILL.md with concise instructions
-   - Additional reference files if content exceeds 500 lines
+   - Additional files under `references/` if detailed context is needed
    - Utility scripts if deterministic operations needed
+   - `agents/openai.yaml` metadata when the skill should appear cleanly in Codex skill lists
 
 3. **Review with user** - present draft and ask:
    - Does this cover your use cases?
@@ -28,10 +29,11 @@ description: Create new agent skills with proper structure, progressive disclosu
 ```
 skill-name/
 ├── SKILL.md           # Main instructions (required)
-├── REFERENCE.md       # Detailed docs (if needed)
-├── EXAMPLES.md        # Usage examples (if needed)
-└── scripts/           # Utility scripts (if needed)
-    └── helper.js
+├── agents/            # UI metadata for Codex skill lists (recommended)
+│   └── openai.yaml
+├── references/        # Detailed docs loaded only when needed
+├── scripts/           # Utility scripts if deterministic operations are needed
+└── assets/            # Templates, images, or other output resources
 ```
 
 ## SKILL.md Template
@@ -59,7 +61,7 @@ description: Brief description of capability. Use when [specific triggers].
 
 ## Description Requirements
 
-The description is **the only thing your agent sees** when deciding which skill to load. It's surfaced in the system prompt alongside all other installed skills. Your agent reads these descriptions and picks the relevant skill based on the user's request.
+The description is **the only thing Codex sees** when deciding which skill to load. It's surfaced in the system prompt alongside all other installed skills. Codex reads these descriptions and picks the relevant skill based on the user's request.
 
 **Goal**: Give your agent just enough info to know:
 
@@ -110,7 +112,7 @@ Split into separate files when:
 After drafting, verify:
 
 - [ ] Description includes triggers ("Use when...")
-- [ ] SKILL.md under 100 lines
+- [ ] SKILL.md concise; split detailed material into `references/` when it grows large
 - [ ] No time-sensitive info
 - [ ] Consistent terminology
 - [ ] Concrete examples included
