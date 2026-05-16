@@ -1,6 +1,6 @@
 ---
 name: grill-with-docs
-description: Grilling session that challenges a plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise. Use when the user wants Codex to stress-test a feature idea, implementation plan, architectural decision, or domain model against the project's language and documented decisions before coding.
+description: Grilling session that challenges a plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise. Use when the user says "/grill-with-docs" or wants Codex to stress-test a feature idea, implementation plan, architectural decision, or domain model against the project's language and documented decisions before coding.
 ---
 
 <what-to-do>

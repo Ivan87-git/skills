@@ -1,6 +1,6 @@
 ---
 name: adapt-external-skills
-description: Import, fork, or update skills from an external source such as GitHub, then adapt them conservatively for Codex while preserving upstream intent. Use when the user wants Codex to bring in new skills, sync a skill repo, rename or customize imported skills, or maintain a local fork of third-party skills.
+description: Import, fork, or update skills from an external source such as GitHub, then adapt them conservatively for Codex while preserving upstream intent. Use when the user says "/adapt-external-skills" or wants Codex to bring in new skills, sync a skill repo, rename or customize imported skills, or maintain a local fork of third-party skills.
 ---
 
 # Adapt External Skills

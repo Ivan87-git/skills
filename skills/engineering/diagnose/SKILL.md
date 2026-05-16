@@ -1,6 +1,6 @@
 ---
 name: diagnose
-description: Disciplined diagnosis loop for hard bugs and performance regressions. Reproduce → minimise → hypothesise → instrument → fix → regression-test. Use when the user wants Codex to diagnose or debug a bug, reports something broken/throwing/failing, or describes a performance regression.
+description: Disciplined diagnosis loop for hard bugs and performance regressions. Reproduce → minimise → hypothesise → instrument → fix → regression-test. Use when the user says "/diagnose", wants Codex to diagnose or debug a bug, reports something broken/throwing/failing, or describes a performance regression.
 ---
 
 # Diagnose

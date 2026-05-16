@@ -1,6 +1,6 @@
 ---
 name: write-a-skill
-description: Create new Codex skills with proper structure, progressive disclosure, and bundled resources. Use when the user wants Codex to create, write, update, or build a skill.
+description: Create new Codex skills with proper structure, progressive disclosure, and bundled resources. Use when the user says "/write-a-skill" or wants Codex to create, write, update, or build a skill.
 ---
 
 # Writing Skills

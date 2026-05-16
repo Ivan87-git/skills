@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: Compact the current conversation into a handoff document for another Codex session or agent to pick up.
+description: Compact the current conversation into a handoff document for another Codex session or agent to pick up. Use when the user says "/handoff" or wants a continuation note for a future session.
 argument-hint: "What will the next session be used for?"
 ---
 

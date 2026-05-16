@@ -1,6 +1,6 @@
 ---
 name: review
-description: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes — Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/PRD asked for?). Calling this skill requests two parallel Codex subagents, one per review axis, and reports them side by side. Use when the user wants Codex to review a branch, a PR, work-in-progress changes, or asks to "review since X".
+description: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes — Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/PRD asked for?). Calling this skill requests two parallel Codex subagents, one per review axis, and reports them side by side. Use when the user says "/review", wants Codex to review a branch, a PR, work-in-progress changes, or asks to "review since X".
 ---
 
 # Review
