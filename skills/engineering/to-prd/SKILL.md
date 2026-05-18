@@ -57,6 +57,10 @@ Do NOT include specific file paths or code snippets. They may end up being outda
 
 Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it within the relevant decision and note briefly that it came from a prototype. Trim to the decision-rich parts — not a working demo, just the important bits.
 
+## Documentation Target
+
+The durable feature documentation that should describe the implemented behavior once the work is complete. Prefer `docs/features/<feature-slug>.md`.
+
 ## Testing Decisions
 
 A list of testing decisions that were made. Include:

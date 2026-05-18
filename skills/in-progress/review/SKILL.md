@@ -1,16 +1,17 @@
 ---
 name: review
-description: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes — Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/PRD asked for?). Calling this skill requests two parallel Codex subagents, one per review axis, and reports them side by side. Use when the user says "/review", wants Codex to review a branch, a PR, work-in-progress changes, or asks to "review since X".
+description: Review the changes since a fixed point (commit, branch, tag, or merge-base) along three axes — Standards, Spec, and Docs. Calling this skill requests parallel Codex subagents, one per review axis, and reports them side by side. Use when the user says "/review", wants Codex to review a branch, a PR, work-in-progress changes, or asks to "review since X".
 ---
 
 # Review
 
-Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
+Three-axis review of the diff between `HEAD` and a fixed point the user supplies:
 
 - **Standards** — does the code conform to this repo's documented coding standards?
 - **Spec** — does the code faithfully implement the originating issue / PRD / spec?
+- **Docs** — do durable docs explain the behavior and decisions introduced by the diff?
 
-Both axes run as **parallel Codex subagents** so they don't pollute each other's context, then this skill aggregates their findings.
+All axes run as **parallel Codex subagents** so they don't pollute each other's context, then this skill aggregates their findings.
 
 The issue tracker should have been provided in repo guidance or the conversation. If `docs/agents/issue-tracker.md` is missing, use `setup-mp-devflow-skills` before publishing.
 
@@ -42,11 +43,11 @@ Anything in the repo that documents how code should be written. Common locations
 - `.editorconfig`, `eslint.config.*`, `biome.json`, `prettier.config.*`, `tsconfig.json` (machine-enforced standards — note them but don't re-check what tooling already checks)
 - Any `STYLE.md`, `STANDARDS.md`, `STYLEGUIDE.md`, or similar at the repo root or under `docs/`
 
-Collect the list of files. The **Standards** sub-agent will read them.
+Collect the list of files. The **Standards** and **Docs** subagents will read them.
 
-### 4. Spawn both subagents in parallel
+### 4. Spawn subagents in parallel
 
-Spawn two Codex subagents in parallel. Use `explorer` subagents when available, because both review axes are read-only codebase investigations.
+Spawn three Codex subagents in parallel. Use `explorer` subagents when available, because all review axes are read-only codebase investigations.
 
 **Standards sub-agent prompt** — include:
 
@@ -62,17 +63,25 @@ Spawn two Codex subagents in parallel. Use `explorer` subagents when available, 
 
 If the spec is missing, skip the Spec sub-agent and note this in the final report.
 
+**Docs sub-agent prompt** — include:
+
+- The diff command and commit list.
+- The standards-source files from step 3.
+- Any feature docs under `docs/features/`, related ADRs, `CONTEXT.md`, README files, and docs referenced by the issue or PRD.
+- The brief: "Read the diff and durable docs. Report: (a) changed behavior or decisions that are not documented; (b) docs that now contradict the implementation; (c) documentation added in the diff that is vague, stale, or in the wrong place. Do not require docs for obvious local code mechanics. Under 400 words."
+
 ### 5. Aggregate
 
-Present the two reports under `## Standards` and `## Spec` headings, verbatim or lightly cleaned. Do **not** merge or rerank findings — the two axes are deliberately separate so the user can see them independently.
+Present the three reports under `## Standards`, `## Spec`, and `## Docs` headings, verbatim or lightly cleaned. Do **not** merge or rerank findings — the three axes are deliberately separate so the user can see them independently.
 
 End with a one-line summary: total findings per axis, and the worst single issue (if any) flagged.
 
-## Why two axes
+## Why separate axes
 
-A change can pass one axis and fail the other:
+A change can pass one axis and fail another:
 
 - Code that follows every standard but implements the wrong thing → **Standards pass, Spec fail.**
 - Code that does exactly what the issue asked but breaks the project's conventions → **Spec pass, Standards fail.**
+- Code that works and matches the spec but leaves future maintainers reverse-engineering behavior → **Spec pass, Docs fail.**
 
-Reporting them separately stops one axis from masking the other.
+Reporting them separately stops one axis from masking another.

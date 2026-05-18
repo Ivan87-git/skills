@@ -96,6 +96,9 @@ After all tests pass, look for [refactor candidates](refactoring.md):
 - [ ] Apply SOLID principles where natural
 - [ ] Consider what new code reveals about existing code
 - [ ] Run tests after each refactor step
+- [ ] Update feature docs for changed behavior or implementation decisions
+- [ ] Update `CONTEXT.md` for new domain language
+- [ ] Add an ADR for any hard-to-reverse trade-off
 
 **Never refactor while RED.** Get to GREEN first.
 
@@ -107,4 +110,5 @@ After all tests pass, look for [refactor candidates](refactoring.md):
 [ ] Test would survive internal refactor
 [ ] Code is minimal for this test
 [ ] No speculative features added
+[ ] Docs still describe current behavior
 ```

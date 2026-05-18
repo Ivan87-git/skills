@@ -28,6 +28,7 @@ Slices may be 'HITL' or 'AFK'. HITL slices require human interaction, such as an
 <vertical-slice-rules>
 - Each slice delivers a narrow but COMPLETE path through every layer (schema, API, UI, tests)
 - A completed slice is demoable or verifiable on its own
+- A completed slice updates durable documentation for any changed behavior
 - Prefer many thin slices over few thick ones
 </vertical-slice-rules>
 
@@ -71,6 +72,12 @@ Avoid specific file paths or code snippets — they go stale fast. Exception: if
 - [ ] Criterion 1
 - [ ] Criterion 2
 - [ ] Criterion 3
+
+## Documentation
+
+- [ ] Update `docs/features/<feature>.md` for changed behavior or implementation decisions
+- [ ] Update `CONTEXT.md` if new domain language is introduced
+- [ ] Add or update an ADR if the slice introduces a hard-to-reverse trade-off
 
 ## Blocked by
 
